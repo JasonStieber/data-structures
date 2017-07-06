@@ -1,12 +1,12 @@
 // var Stack = function() {
-//   let constructor = {};
-//   constructor.size = 0;
-//   constructor.storage = {};
-//   _.extend(constructor, stackMethods);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-//   // constructor.push = stackMethods.push;
-//   // constructor.pop = stackMethods.pop;
-//   constructor.size = stackMethods.size.bind(this);
-//   return constructor;
+//   let obj = {};
+//   obj.size = 0;
+//   obj.storage = {};
+//   _.extend(obj, stackMethods);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+//   // obj.push = stackMethods.push;
+//   // obj.pop = stackMethods.pop;
+//   obj.size = stackMethods.size.bind(this);
+//   return obj;
   
 //   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
 //   // but try not not reference your old code in writing the new style.
@@ -32,14 +32,14 @@
 //   return this.size;
 // };
 var Stack = function() {
-  let constructor = {};
-  constructor.pos = 0;
-  constructor.storage = {};
-  _.extend(constructor, stackMethods);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-  // constructor.push = stackMethods.push;
-  // constructor.pop = stackMethods.pop;
-  //  constructor.size = stackMethods.size.bind(this);
-  return constructor;
+  let obj = {};
+  obj.pos = 0;
+  obj.storage = {};
+  _.extend(obj, stackMethods);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  // obj.push = stackMethods.push;
+  // obj.pop = stackMethods.pop;
+  //  obj.size = stackMethods.size.bind(this);
+  return obj;
   
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
@@ -58,16 +58,19 @@ stackMethods.push = function(value) {
 };
 
 stackMethods.pop = function() {
+  if (this.pos === 0) {
+    return 0;
+  } let offTheTop = this.pos;
   this.pos--;
-  return this.storage[this.pos]; 
+  return this.storage[offTheTop]; 
 };
 
 stackMethods.size = function() {
   return this.pos;
 };
 
-var baller  = Stack();
-baller.push("batman");
+var baller = Stack();
+baller.push('batman');
 console.log(baller);
 console.log(baller.size);
 console.log(baller.pop());
