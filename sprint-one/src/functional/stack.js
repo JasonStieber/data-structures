@@ -17,7 +17,6 @@ var Stack = function() {
     } else {
       size--;
       var theGoods = storage[size];
-      console.log(theGoods);
       return theGoods;
     }  
   };
