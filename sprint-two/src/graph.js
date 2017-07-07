@@ -17,7 +17,6 @@ Graph.prototype.addNode = function(node) {
 Graph.prototype.contains = function(node) {
   var exist = false;
   this.forEachNode(function (eachspot) {
-    console.log("How many times thorught");
     if (eachspot === node) {
       exist = true;
     }
@@ -62,10 +61,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
   for (var i = 0; i < this.dir.length; i++) {  // grabbing a list of all the keys in nodes {}
-   // console.log('how big is our array of nodes ')
-    console.log('huston we have a problem ' + this.dir[i]);
     if (this.dir[i] !== undefined) {                // making sure that the key still exists
-      console.log('deo we get into our if?' + this.dir[i]);
         cb(this.dir[i]);             // calling our call back functions on the node's key
     }
   }
