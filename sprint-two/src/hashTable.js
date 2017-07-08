@@ -4,8 +4,6 @@ var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
   this.elements = 0;
-  console.log(getIndexBelowMaxForKey('Allan',16));
-  console.log(getIndexBelowMaxForKey('Allan',8))
 };
 
 
