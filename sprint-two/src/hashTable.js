@@ -37,10 +37,10 @@ HashTable.prototype.insert = function(k, v) {
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  var elements = this._storage.get(index);
-  for (var i = 0; i < elements.length; i++) {
-    if (elements[i][0] === k) {
-      return elements[i][1];
+  var tuples = this._storage.get(index);
+  for (var i = 0; i < tuples.length; i++) {
+    if (tuples[i][0] === k) {
+      return tuples[i][1];
     }
   } return undefined;
   throw 'no key here check round back batman ';
@@ -50,6 +50,12 @@ HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   this.elements--;
   this.resize();
+  var tuples = this._storage.get(index);
+  for (var i = 0; i < tuples.length; i++) {
+    if (tuples[i][0] === k) {
+      tuples.splice(i); 
+    }
+  } this._storage.set(index, tuples);
 };
 
 HashTable.prototype.resize = function () {
