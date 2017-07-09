@@ -4,12 +4,13 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    if (this.tail === null) {
+    if (this.tail === null && this.head === null) {
       this.tail = Node(value);
       this.head = this.tail;
     } else {
       var tempNode = Node(value);
       this.tail.next = tempNode;
+      tempNode.previous = this.tail;
       this.tail = tempNode;
     }
   };
@@ -18,6 +19,7 @@ var LinkedList = function() {
     var tempNode = this.head;    
     if (this.head.next !== null) {
       this.head = tempNode.next; 
+      this.head.next = null;
       return tempNode.value;
     } else if (this.head.next === null) {
       this.head = null;
@@ -37,14 +39,21 @@ var LinkedList = function() {
     } return false;
   };
 
+  list.addToHead = function(value) {
+    var currentHead = this.head;
+    this.head = Node(value);
+    this.head.next = currentHead;
+    this.head.previous = null;  
+  };
+
   return list;
 };
 
 var Node = function(value) {
   var node = {};
-
   node.value = value;
   node.next = null;
+  node.previous = null;
 
   return node;
 };
